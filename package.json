@@ -5,7 +5,7 @@
   "author": "Ana Karla Santana",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev ./src/index.ts"
+    "start": "ts-node-dev ./src/index.ts"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
