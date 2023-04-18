@@ -1,32 +1,29 @@
 import { Request, Response } from "express";
-import { StatusCodes } from "http-status-codes";
 import * as yup from 'yup';
+import { validation } from "../../shared/middlewares";
 
 interface ICidades {
   nome: string;
 }
+interface IFilter {
+  filter?: string;
+}
 
-const bodyValidation: yup.Schema<ICidades> = yup.object().shape({
-  nome: yup.string().required().min(3),
-});
+export const createValidation = validation((getSchema) => ({
+  body: getSchema<ICidades>(yup.object().shape({
+    nome: yup.string().required().min(3),
+    estado: yup.string().required().min(3),
+  })),
+  query: getSchema<IFilter>(yup.object().shape({
+    filter: yup.string().required().min(3),
+  })),
+}));
+
+
 
 export const create = async (req: Request<{}, {}, ICidades>, res: Response) => {
-  let validatedData: ICidades | undefined = undefined;
 
-  try {
-    validatedData = await bodyValidation.validate(req.body);
-  } catch (error) {
-    const yupError = error as yup.ValidationError;
-
-    return res.json({
-      errors: {
-        default: yupError.message,
-      }
-    })
-  }
-
-  console.log(validatedData);
-  
+  console.log(req.body);
 
   return res.send('Created!');
 }
