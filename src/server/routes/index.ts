@@ -8,9 +8,15 @@ router.get('/', (_, res) => {
   return res.json('Olá, DEV!')
 })
 
-router.post('/cidades', 
-CidadesController.createValidation,
-CidadesController.create);
+// Get
+router.get('/cidades', CidadesController.getAllValidation,CidadesController.getAll);
+router.get('/cidades/:id', CidadesController.getById,CidadesController.getById);
+
+
+
+// Post
+router.post('/cidades', CidadesController.createValidation,CidadesController.create);
+
 
 router.post('/post', (req, res) => {
   //console.log(req.body);
