@@ -11,7 +11,7 @@ export default {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "C:\\Users\\AnaKarla\\AppData\\Local\\Temp\\jest",
+  // cacheDirectory: "/private/var/folders/6f/sx94l4l91vbck2kw5s2_q27c0000gn/T/jest_dx",
 
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
@@ -23,19 +23,19 @@ export default {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
+  //   "/node_modules/"
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-  coverageProvider: "v8",
+  coverageProvider: 'v8',
 
   // A list of reporter names that Jest uses when writing coverage reports
   coverageReporters: [
-    "json",
+    'json'
   ],
 
   // An object that configures minimum threshold enforcement for coverage results
@@ -133,7 +133,7 @@ export default {
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
   setupFilesAfterEnv: [
-    "./tests/jest.setup.ts"
+    './tests/jest.setup.ts'
   ],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
@@ -153,12 +153,12 @@ export default {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "<rootDir>/tests/**/*.test.ts",
+    '<rootDir>/tests/**/*.test.ts'
   ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
-  //   "\\\\node_modules\\\\"
+  //   "/node_modules/"
   // ],
 
   // The regexp pattern or array of patterns that Jest uses to detect test files
@@ -172,13 +172,13 @@ export default {
 
   // A map from regular expressions to paths to transformers
   transform: {
-    '^. +\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx)$': 'ts-jest'
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
-  //   "\\\\node_modules\\\\",
-  //   "\\.pnp\\.[^\\\\]+$"
+  //   "/node_modules/",
+  //   "\\.pnp\\.[^\\/]+$"
   // ],
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
