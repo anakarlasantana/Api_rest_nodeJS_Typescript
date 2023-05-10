@@ -9,7 +9,8 @@ interface ICidades {
 
 export const createValidation = validation((getSchema) => ({
   body: getSchema<ICidades>(yup.object().shape({
-    nome: yup.string().required().min(3),
+    nome: yup.string().required().min(3).max(150),
+    estado: yup.string().required().min(3).max(150),
   })),
 }));
 
@@ -18,5 +19,7 @@ export const create = async (req: Request<{}, {}, ICidades>, res: Response) => {
 
   console.log(req.body);
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado!');
+  return res.status(StatusCodes.CREATED).send('Criado com sucesso!');
+
+  
 }
