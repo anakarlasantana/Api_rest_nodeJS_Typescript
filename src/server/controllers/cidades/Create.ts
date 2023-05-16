@@ -19,7 +19,7 @@ export const create = async (req: Request<{}, {}, ICidades>, res: Response) => {
 
   console.log(req.body);
 
-  return res.status(StatusCodes.CREATED).send('Criado com sucesso!');
+  return res.status(StatusCodes.CREATED).json(1);
 
   
 }

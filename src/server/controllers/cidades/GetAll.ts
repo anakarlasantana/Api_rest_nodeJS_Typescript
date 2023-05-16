@@ -22,7 +22,13 @@ export const getAllValidation = validation((getSchema) => ({
 
 export const getAll = async (req: Request<{}, {}, {}, IQueryProps>, res: Response) => { // OS {} demosntram as posições das propriedades de Request (coloca o cursor sobre o nome para vizualizar melhor)
 
-  console.log(req.query);
+  res.setHeader('access-control-expose-headers', 'x-total-count');
+  res.setHeader('x-total-count', 1);
 
-  return res.status(StatusCodes.INTERNAL_SERVER_ERROR).send('Não implementado!');
-}
+  return res.status(StatusCodes.OK).json([
+    {
+      id: 1,
+      nome: 'Caxias do Sul',
+    }
+  ]);
+};
