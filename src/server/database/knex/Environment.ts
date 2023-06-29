@@ -13,14 +13,15 @@ export const development: Knex.Config = {
   seeds: {
     directory: path.resolve(__dirname, '..', 'seeds'),
   },
-  // No caso de SQLite é necessário fazer uma configuração para atualização de foreign key//
+  // No caso de SQLite é necessário fazer uma configuração para atualização de foreign keys//
   pool: {
     afterCreate: (connection: any, done: Function) => {
-      connection.run('PRAGMA foreign-key = ON');
+      connection.run('PRAGMA foreign_keys = ON');
       done();
     }
   }
 };
+
 
 export const test: Knex.Config = {
   ...development,

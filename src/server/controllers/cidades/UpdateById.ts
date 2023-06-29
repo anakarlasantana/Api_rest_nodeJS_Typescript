@@ -3,14 +3,15 @@ import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
 
 import { validation } from '../../shared/middlewares/validation';
+import { ICidades } from '../../database/models';
 
 
 interface IParamProps {
   id?: number;
 }
-interface IBodyProps {
-  nome: string;
-}
+interface IBodyProps extends Omit<ICidades, 'id'> {}
+
+
 export const updateByIdValidation = validation(getSchema => ({
   body: getSchema<IBodyProps>(yup.object().shape({
     nome: yup.string().required().min(3),

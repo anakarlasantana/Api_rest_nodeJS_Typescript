@@ -8,6 +8,7 @@ import { validation } from '../../shared/middlewares/validation';
 interface IParamProps {
   id?: number;
 }
+
 export const deleteByIdValidation = validation(getSchema => ({
   params: getSchema<IParamProps>(yup.object().shape({
     id: yup.number().integer().required().moreThan(0),
