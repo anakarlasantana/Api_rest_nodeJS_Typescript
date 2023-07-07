@@ -7,7 +7,7 @@ import { testServer } from "../jest.setup"
 
     const testeOfUpdateById = await testServer
     .post('/cidades')
-    .send({nome: 'Fortaleza', estado: "Ceará"})
+    .send({nome: 'Fortaleza'})
 
     expect(testeOfUpdateById.statusCode).toEqual(StatusCodes.CREATED);
 

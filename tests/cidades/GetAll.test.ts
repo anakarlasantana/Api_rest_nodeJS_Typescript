@@ -1,23 +1,24 @@
-import { StatusCodes } from "http-status-codes"
-import { testServer } from "../jest.setup"
+import { StatusCodes } from 'http-status-codes';
 
- describe('Cidades - GetAll',  () => {
+import { testServer } from '../jest.setup';
+
+
+describe('Cidades - GetAll', () => {
 
   it('Buscar todos os registros', async () => {
 
-    const testeOfGetAll = await testServer
-    .post('/cidades')
-    .send({nome: 'Fortaleza', estado: "Ceará"})
+    const res1 = await testServer
+      .post('/cidades')
+      .send({ nome: 'Caxias do sul' });
 
-    expect(testeOfGetAll.statusCode).toEqual(StatusCodes.CREATED);
+    expect(res1.statusCode).toEqual(StatusCodes.CREATED);
 
-    const resBuscarRegistros = await testServer
-    .get('/cidades')
-    .send()
+    const resBuscada = await testServer
+      .get('/cidades')
+      .send();
 
-    expect(Number(resBuscarRegistros.header['x-total-count'])).toBeGreaterThan(0);
-    expect(resBuscarRegistros.statusCode).toEqual(StatusCodes.OK);
-    expect(resBuscarRegistros.body.length).toBeGreaterThan(0);
-
-  })
- })
+    expect(Number(resBuscada.header['x-total-count'])).toBeGreaterThan(0);
+    expect(resBuscada.statusCode).toEqual(StatusCodes.OK);
+    expect(resBuscada.body.length).toBeGreaterThan(0);
+  });
+});

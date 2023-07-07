@@ -6,7 +6,7 @@ import { testServer } from "../jest.setup"
   it('Cria registro', async () => {
     const testeOfCreate = await testServer
     .post('/cidades')
-    .send({nome: 'Fortaleza', estado: "Ceará"})
+    .send({nome: 'Fortaleza'})
 
     expect(testeOfCreate.statusCode).toEqual(StatusCodes.CREATED);
     expect(typeof testeOfCreate.body).toEqual("number");

@@ -3,6 +3,7 @@ import * as yup from 'yup';
 import { validation } from "../../shared/middlewares";
 import { StatusCodes } from "http-status-codes";
 import { ICidades } from "../../database/models";
+import { CidadesProvider } from "../../database/providers/cidades";
 
 interface IBodyProps extends Omit<ICidades, 'id'> {}
 
@@ -15,9 +16,14 @@ export const createValidation = validation((getSchema) => ({
 
 export const create = async (req: Request<{}, {}, ICidades>, res: Response) => {
 
-  console.log(req.body);
+  const result = await CidadesProvider.create(req.body);
 
-  return res.status(StatusCodes.CREATED).json(1);
-
-  
+  if (result instanceof Error) {
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: result.message
+      }
+    });
+  }
+  return res.status(StatusCodes.CREATED).json(result);
 }
